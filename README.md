@@ -6,6 +6,10 @@
     ```
     $ crontab -e
     ```
+    or if you want to select editor
+    ```
+    $ env EDITOR=nano crontab -e
+    ```
 
 3. Add something like this:
     ```
