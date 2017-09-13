@@ -17,7 +17,7 @@ while getopts ":s:b:n:e:u:x:h" option; do
     x  ) slack_hook_url="$OPTARG";;
     h  ) usage; exit;;
     \? ) echo "Unknown option: -$OPTARG" >&2; exit 1;;
-    : ) echo "Missing option argument for -$OPTARG" >&2; exit 1;;
+    :  ) echo "Missing option argument for -$OPTARG" >&2; exit 1;;
     *  ) echo "Unimplemented option: -$OPTARG" >&2; exit 1;;
   esac
 done
@@ -36,8 +36,7 @@ size=${#birthday_icons[@]}
 
 payload=$(<slack-message-template.json)
 payload=${payload/SLACK_USER/$slack_user}
-while [[ $payload == *"RANDOM_SLACK_ICON"* ]]
-do
+while [[ $payload == *"RANDOM_SLACK_ICON"* ]]; do
     payload=${payload/RANDOM_SLACK_ICON/${birthday_icons[$(($RANDOM % $size))]}}
 done
 
