@@ -1,5 +1,5 @@
 # Birthday reminder
-Have you ever thought about complicating birthday reminders over the top.
+Have you ever thought about complicating birthday reminders making something very simple overly complex instead? Now you've finally found your way home!
 
 ## Usage
 1. Open your terminal.
