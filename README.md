@@ -1,4 +1,6 @@
 # Birthday reminder
+Have you ever thought about complicating birthday reminders over the top.
+
 ## Usage
 1. Open your terminal.
 
