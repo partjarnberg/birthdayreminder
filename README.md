@@ -20,7 +20,11 @@ Have you ever thought about complicating birthday reminders making something ver
     0 8 4 6 * path/to/birthdayreminder.sh -n "John Doe" -b "1976-06-04" -e jane.roe@example.com -s "BIRTHDAY REMINDER" -u @johndoe -x https://hooks.slack.com/services/some/example/hook
     ```
 
-4. Example output
+4. Read more
+   
+    Slack web hooks - [https://api.slack.com/incoming-webhooks](https://api.slack.com/incoming-webhooks)
+
+5. Example output
 
 __Slack__
 ![Slack message example output][example-slack-output]    
