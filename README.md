@@ -19,7 +19,12 @@
     ```
 
 4. Example output
-![Slack message example output][example-output]    
 
+__Slack__
+![Slack message example output][example-slack-output]    
 
-[example-output]: https://github.com/partjarnberg/birthdayreminder/blob/screenshots/example.png?raw=true "Example output"
+__Email__
+![Email message example output][example-mail-output]
+
+[example-slack-output]: https://github.com/partjarnberg/birthdayreminder/blob/screenshots/example-slack.png?raw=true "Example output"
+[example-mail-output]: https://github.com/partjarnberg/birthdayreminder/blob/screenshots/example-mail.png?raw=true "Example output"
