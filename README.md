@@ -14,8 +14,8 @@
 3. Add something like this:
     ```
     # Format: [minute] [hour] [day of month] [month] [day of week (0=Sunday)] [command to execute]
-    # Remind me of someones birthday at 10th of June at 07:00 every year
-    0 7 10 6 * path/to/birthdayreminder.sh -n "Some name" -b "1970-06-10" -e my.mail@example.com -s "Subject prefix" -u @[slack user of the celebrated] -x [slack hook url]
+    # Remind me of John Doe's birthday 4th of June at 08:00 that day every year
+    0 8 4 6 * path/to/birthdayreminder.sh -n "John Doe" -b "1976-06-04" -e jane.roe@example.com -s "BIRTHDAY REMINDER" -u @johndoe -x https://hooks.slack.com/services/some/example/hook
     ```
 
 4. Example output
