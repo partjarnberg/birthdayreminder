@@ -39,8 +39,10 @@ slack_payload=${slack_payload//$USER_PLACEHOLDER/$slack_user}
 slack_payload=${slack_payload//$NAME_PLACEHOLDER/$name}
 # Set age
 slack_payload=${slack_payload//$AGE_PLACEHOLDER/$age}
+# Set unknown number of birthday icons
 size=${#BIRTHDAY_ICONS[@]}
 while [[ $slack_payload == *"$BIRTHDAY_ICON_PLACEHOLDER"* ]]; do
     slack_payload=${slack_payload/$BIRTHDAY_ICON_PLACEHOLDER/${BIRTHDAY_ICONS[$(($RANDOM % $size))]}}
 done
+# Send message payload to slack
 curl -X POST --data-urlencode "payload=$slack_payload" $slack_hook_url
