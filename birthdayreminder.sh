@@ -23,7 +23,14 @@ while getopts ":s:b:n:e:u:x:h" option; do
 done
 
 # Create and send email
-age=$(($(date -jf %s $((`date +%s` - `date -jf %Y-%m-%d "$birthday" +%s`)) +%Y)-1970))
+if date -v 1d > /dev/null 2>&1; then
+  # BSD
+  age=$(($(date -jf %s $(($(date +%s)-$(date -jf %Y-%m-%d "$birthday" +%s))) +%Y)-1970))
+else
+  # GNU
+  age=$(($(date --date=@$(($(date +%s)-$(date --date="$birthday" +%s))) +%Y)-1970))
+fi
+eval $age
 email_body=$(<email-message-template)
 email_body=${email_body/NAME/$name}
 email_body=${email_body/AGE/$age}
@@ -33,11 +40,9 @@ echo $email_body | mail -s "$subject_prefix: $name" $email
 birthday_icons=(":birthday:" ":sparkles:" ":tada:" ":champagne:" ":cake:" \
 ":star2:" ":star:" ":cocktail:" ":tropical_drink:" ":dizzy:")
 size=${#birthday_icons[@]}
-
 payload=$(<slack-message-template.json)
 payload=${payload/SLACK_USER/$slack_user}
 while [[ $payload == *"RANDOM_SLACK_ICON"* ]]; do
     payload=${payload/RANDOM_SLACK_ICON/${birthday_icons[$(($RANDOM % $size))]}}
 done
-
 curl -X POST --data-urlencode "payload=$payload" $slack_hook_url
