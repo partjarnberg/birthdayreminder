@@ -7,7 +7,7 @@ EXAMPLE:
 $ birthdayreminder.sh -n "John Doe" -b "1976-06-04" -u @johndoe -x https://hooks.slack.com/services/some/example/hook
 '; }
 
-while getopts ":n:b:u:x:h   " option; do
+while getopts ":n:b:u:x:h" option; do
   case $option in
     n  ) name="$OPTARG";;
     b  ) birthday="$OPTARG";;
