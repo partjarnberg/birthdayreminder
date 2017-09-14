@@ -36,9 +36,11 @@ mail_payload=${mail_payload/$MAIL_AGE_CONTAINER/$age}
 echo $mail_payload | mail -s "$subject_prefix: $name" $email
 
 # Create and send slack message
-size=${#SLACK_BIRTHDAY_ICONS[@]}
-slack_payload=$(<slack-message-template.json)
+noof=$(ls -1q slack-templates/* | wc -l)
+templates=(slack-templates/*.json)
+slack_payload=$(<${templates[$(($RANDOM % $noof))]})
 slack_payload=${slack_payload/$SLACK_USER_CONTAINER/$slack_user}
+size=${#SLACK_BIRTHDAY_ICONS[@]}
 while [[ $slack_payload == *"$SLACK_ICON_CONTAINER"* ]]; do
     slack_payload=${slack_payload/$SLACK_ICON_CONTAINER/${SLACK_BIRTHDAY_ICONS[$(($RANDOM % $size))]}}
 done
